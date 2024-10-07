@@ -1,0 +1,22 @@
+# This is a sample deployment manifest file for a simple web application.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crud-fe
+  labels:
+    app: crud-fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-fe
+  template:
+    metadata:
+      labels:
+        app: crud-fe
+    spec:
+      containers:
+      - name: crud-fe
+        image: ahadalichowdhury/crud-fe-devops:{{.Values.image.tag}}
+        ports:
+        - containerPort: 3000
