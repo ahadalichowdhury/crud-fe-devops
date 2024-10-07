@@ -20,10 +20,10 @@ WORKDIR /app
 RUN npm install -g serve
 
 # Copy the build output to the production container
-COPY --from=build /app/dist /app/dist
+COPY --from=build /app/build /app/build
 
 # Expose the port where the app will run
 EXPOSE 3000
 
-# Run the serve command to serve the app on port 5173
-CMD ["serve", "-s", "dist", "-l", "3000"]
+# Run the serve command to serve the app on port 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
